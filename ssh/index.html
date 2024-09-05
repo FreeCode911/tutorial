@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Installation Instructions</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #e9eae3;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+        }
+        code {
+            background-color: #161b22;
+            color: #c9d1d9;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 0.875rem;
+        }
+        pre {
+            background-color: #161b22;
+            color: #c9d1d9;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid #30363d;
+            white-space: pre-wrap;
+        }
+        .note {
+            background-color: #30363d;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #393e46;
+            margin: 1rem 0;
+        }
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            text-align: center;
+            background-color: #161b22;
+            color: #c9d1d9;
+            border-top: 1px solid #30363d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Installing Chrome Remote Desktop!</h1>
+        <p>To get started, run the following commands:</p>
+
+        <h3>1. Installing dependencies</h3>
+        <pre><code>apt update && apt upgrade -y && apt install curl sudo dropbear python3 -y</code></pre>
+
+        <h3>2. Change root password to allow SSH</h3>
+        <pre><code>echo root:changethiswithyourpassword | chpasswd</code></pre>
+        <p>Replace <code>changethiswithyourpassword</code> with a secure password for the root user. For example:</p>
+        <pre><code>echo root:123456 | chpasswd</code></pre>
+        <p class="note"><strong>DO NOT USE THIS DIRECTLY</strong></p>
+
+        <h3>3. Start dropbear</h3>
+        <pre><code>dropbear -p yourServerPort</code></pre>
+        <p>Replace <code>yourServerPort</code> with the actual server port you have been assigned.</p>
+
+        <h3>4. SSH into the VPS using PuTTY or SSH</h3>
+        <p>You will need to figure this out yourself.</p>
+
+        <h3>5. Fixing Systemctl (Important)</h3>
+        <p>You have to fix the <code>systemctl</code> as the default does not work with this system. Execute the commands one by one:</p>
+        <pre><code>curl -o /bin/systemctl https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py</code></pre>
+        <pre><code>chmod +x /bin/systemctl</code></pre>
+        <pre><code>systemctl</code></pre>
+        <p>If it returns a large list of services, you are good to go. Otherwise, repeat this step.</p>
+
+        <h3>6. Run the installation script</h3>
+        <pre><code>bash &lt;(curl -s https://raw.githubusercontent.com/unknownpersonog/RDPXcript/main/install.sh)</code></pre>
+
+        <h3>7. Follow the script’s guidance</h3>
+        <p>Ensure you select <code>0</code> when choosing CRD or XRDP.</p>
+
+        <p class="note"><strong>NOTE: This only works for Debian!</strong></p>
+    </div>
+    <footer>
+        <p>&copy; 2024 LykCloud. All rights reserved.</p>
+    </footer>
+</body>
+</html>
