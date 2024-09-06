@@ -5,9 +5,8 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-clear
-
 # Display the LykCloud header
+clear
 echo "#######################################################################################"
 echo "#                                                                                     #"
 echo "#                                  LykCloud                                            #"
@@ -22,6 +21,9 @@ echo "Select an option:"
 echo "1) Install PufferPanel"
 echo "2) Exit"
 read -p "Enter option: " option
+
+# Debugging output
+echo "You entered option: $option"
 
 # Check the user's input
 if [ "$option" -eq 1 ]; then
