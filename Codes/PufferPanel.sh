@@ -23,12 +23,12 @@ echo "2) Exit"
 read -p "Enter option: " option
 
 # Debugging output
-echo "You entered option: $option"
+echo "You entered option: $option" >&2
 
 # Check the user's input
 if [ "$option" -eq 1 ]; then
     clear
-    echo -e "${RED}Downloading... Please Wait"
+    echo -e "${RED}Downloading... Please Wait" >&2
     apt update && apt upgrade -y
 
     export SUDO_FORCE_REMOVE=yes
@@ -44,31 +44,31 @@ if [ "$option" -eq 1 ]; then
     apt install pufferpanel -y
     clear
 
-    echo -e "${GREEN}PufferPanel installation completed!"
-    echo -e "${YELLOW}Enter PufferPanel Port"
+    echo -e "${GREEN}PufferPanel installation completed!" >&2
+    echo -e "${YELLOW}Enter PufferPanel Port" >&2
     read pufferPanelPort
 
     sed -i "s/\"host\": \"0.0.0.0:8080\"/\"host\": \"0.0.0.0:$pufferPanelPort\"/g" /etc/pufferpanel/config.json
-    echo -e "${YELLOW}Enter the username for the admin user:"
+    echo -e "${YELLOW}Enter the username for the admin user:" >&2
     read adminUsername
-    echo -e "${YELLOW}Enter the password for the admin user:"
+    echo -e "${YELLOW}Enter the password for the admin user:" >&2
     read adminPassword
-    echo -e "${YELLOW}Enter the email for the admin user:"
+    echo -e "${YELLOW}Enter the email for the admin user:" >&2
     read adminEmail
 
     pufferpanel user add --name "$adminUsername" --password "$adminPassword" --email "$adminEmail" --admin
     clear
 
-    echo -e "${GREEN}Admin user $adminUsername added successfully!${NC}"
+    echo -e "${GREEN}Admin user $adminUsername added successfully!${NC}" >&2
     systemctl restart pufferpanel
     clear
-    echo -e "${GREEN}PufferPanel Created & Started - PORT: ${NC}$pufferPanelPort${GREEN}"
+    echo -e "${GREEN}PufferPanel Created & Started - PORT: ${NC}$pufferPanelPort${GREEN}" >&2
 
 elif [ "$option" -eq 2 ]; then
     echo "Exiting..."
     exit 0
 
 else
-    echo -e "${RED}Invalid option. Please try again.${NC}"
+    echo -e "${RED}Invalid option. Please try again.${NC}" >&2
     exit 1
 fi
