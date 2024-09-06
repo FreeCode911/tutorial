@@ -6,9 +6,9 @@ RED='\033[0;31m'
 echo "
 #######################################################################################
 #
-#                                  VPSFREE.ES SCRIPTS
+#                                     LykCloud
 #
-#                           Copyright (C) 2022 - 2023, VPSFREE.ES
+#                           Copyright (C) 2024 LykCloud
 #
 #
 #######################################################################################"
@@ -47,3 +47,7 @@ if [ $option -eq 1 ]; then
     systemctl restart pufferpanel
     clear
     echo -e "${GREEN}PufferPanel Created & Started - PORT: ${NC}$pufferPanelPort${GREEN}"
+    
+else
+    echo -e "${RED}Invalid option selected.${NC}"
+fi
