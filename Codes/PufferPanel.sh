@@ -7,6 +7,7 @@ NC='\033[0m' # No Color
 
 clear
 
+# Display the LykCloud header
 echo "#######################################################################################"
 echo "#                                                                                     #"
 echo "#                                  LykCloud                                            #"
@@ -15,12 +16,15 @@ echo "#                           Copyright (C) 2024 LykCloud                   
 echo "#                                                                                     #"
 echo "#######################################################################################"
 echo
+
+# Display the menu options
 echo "Select an option:"
 echo "1) Install PufferPanel"
 echo "2) Exit"
 read -p "Enter option: " option
 
-if [ "$option" -eq 2 ]; then
+# Check the user's input
+if [ "$option" -eq 1 ]; then
     clear
     echo -e "${RED}Downloading... Please Wait"
     apt update && apt upgrade -y
@@ -58,7 +62,11 @@ if [ "$option" -eq 2 ]; then
     clear
     echo -e "${GREEN}PufferPanel Created & Started - PORT: ${NC}$pufferPanelPort${GREEN}"
 
-else
+elif [ "$option" -eq 2 ]; then
     echo "Exiting..."
+    exit 0
+
+else
+    echo -e "${RED}Invalid option. Please try again.${NC}"
     exit 1
 fi
