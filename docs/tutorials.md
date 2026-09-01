@@ -1,22 +1,30 @@
-# Tutorial Categories
+<div class="tutorial-landing">
+  <div class="tutorial-hero">
+    <p class="eyebrow">Guides</p>
+    <h1>Tutorial Categories</h1>
+    <p class="tutorial-subtitle">Choose a category to find the guide you need.</p>
+  </div>
 
-Choose a category to find the guide you need.
+  <div class="category-grid">
+    <a class="category-card" href="/ssh">
+      <h3>SSH Access</h3>
+      <p>Set up root access, install Dropbear, and connect to your server.</p>
+    </a>
+    <a class="category-card" href="/chrome-remote-desktop">
+      <h3>Remote Desktop</h3>
+      <p>Install and configure Chrome Remote Desktop on Debian-based systems.</p>
+    </a>
+    <a class="category-card" href="/systemctl">
+      <h3>System Fixes</h3>
+      <p>Repair broken service commands and keep your stack functioning properly.</p>
+    </a>
+    <a class="category-card" href="/pufferpanel">
+      <h3>Hosting Tools</h3>
+      <p>Deploy PufferPanel and create an admin user for server management.</p>
+    </a>
+  </div>
 
-<div class="category-grid">
-  <a class="category-card" href="/ssh">
-    <h3>SSH Access</h3>
-    <p>Set up root access, install Dropbear, and connect to your server.</p>
-  </a>
-  <a class="category-card" href="/chrome-remote-desktop">
-    <h3>Remote Desktop</h3>
-    <p>Install and configure Chrome Remote Desktop on Debian-based systems.</p>
-  </a>
-  <a class="category-card" href="/systemctl">
-    <h3>System Fixes</h3>
-    <p>Repair broken service commands and keep your stack functioning properly.</p>
-  </a>
-  <a class="category-card" href="/pufferpanel">
-    <h3>Hosting Tools</h3>
-    <p>Deploy PufferPanel and create an admin user for server management.</p>
-  </a>
+  <div class="tutorial-footer">
+    <a href="/">Previous page: Home</a>
+  </div>
 </div>
