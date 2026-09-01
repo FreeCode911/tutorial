@@ -1,3 +1,8 @@
+# PufferPanel Installation Script
+
+This script installs PufferPanel on a Debian-based system and creates the admin account automatically.
+
+```bash
 #!/bin/bash
 clear
 GREEN='\033[0;32m'
@@ -47,7 +52,14 @@ if [ $option -eq 1 ]; then
     systemctl restart pufferpanel
     clear
     echo -e "${GREEN}PufferPanel Created & Started - PORT: ${NC}$pufferPanelPort${GREEN}"
-    
+
 else
     echo -e "${RED}Invalid option selected.${NC}"
 fi
+```
+
+## Notes
+
+- This script is meant for Debian-based systems.
+- It downloads the `systemctl` replacement before installing PufferPanel.
+- You should review the script before running it on a real server.
