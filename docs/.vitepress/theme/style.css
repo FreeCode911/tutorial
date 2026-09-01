@@ -1,354 +1,611 @@
-/**
- * Customize default theme styling by overriding CSS variables:
- * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
- */
+/* =========================================================
+   tForce VitePress Theme
+   Green Terminal
+   ========================================================= */
 
-/**
- * Colors
- *
- * Each colors have exact same color scale system with 3 levels of solid
- * colors with different brightness, and 1 soft color.
- *
- * - `XXX-1`: The most solid color used mainly for colored text. It must
- *   satisfy the contrast ratio against when used on top of `XXX-soft`.
- *
- * - `XXX-2`: The color used mainly for hover state of the button.
- *
- * - `XXX-3`: The color for solid background, such as bg color of the button.
- *   It must satisfy the contrast ratio with pure white (#ffffff) text on
- *   top of it.
- *
- * - `XXX-soft`: The color used for subtle background such as custom container
- *   or badges. It must satisfy the contrast ratio when putting `XXX-1` colors
- *   on top of it.
- *
- *   The soft color must be semi transparent alpha channel. This is crucial
- *   because it allows adding multiple "soft" colors on top of each other
- *   to create an accent, such as when having inline code block inside
- *   custom containers.
- *
- * - `default`: The color used purely for subtle indication without any
- *   special meanings attached to it such as bg color for menu hover state.
- *
- * - `brand`: Used for primary brand colors, such as link text, button with
- *   brand theme, etc.
- *
- * - `tip`: Used to indicate useful information. The default theme uses the
- *   brand color for this by default.
- *
- * - `warning`: Used to indicate warning to the users. Used in custom
- *   container, badges, etc.
- *
- * - `danger`: Used to show error, or dangerous message to the users. Used
- *   in custom container, badges, etc.
- * -------------------------------------------------------------------------- */
+
+/* =========================================================
+   Theme Variables
+   ========================================================= */
 
 :root {
-  color-scheme: dark;
-  --vp-c-bg: #0d0f16;
-  --vp-c-bg-soft: #14182a;
-  --vp-c-bg-alt: #0c101b;
-  --vp-c-border: rgba(163, 142, 255, 0.2);
-  --vp-c-divider: rgba(163, 142, 255, 0.16);
-  --vp-c-text-1: #f3f4f8;
-  --vp-c-text-2: #d4d9f8;
-  --vp-c-text-3: #9ea9d5;
+  /* Backgrounds */
+  --vp-c-bg: #090d09;
+  --vp-c-bg-alt: #0c120c;
+  --vp-c-bg-elv: #101810;
+  --vp-c-bg-soft: #0d150d;
 
-  --vp-c-default-1: #f3f4f8;
-  --vp-c-default-2: #dfe3ff;
-  --vp-c-default-3: #8f7cf5;
-  --vp-c-default-soft: rgba(143, 124, 245, 0.12);
+  /* Text */
+  --vp-c-text-1: #d7fbd7;
+  --vp-c-text-2: #9cba9c;
+  --vp-c-text-3: #668066;
 
-  --vp-c-brand-1: #a78bfa;
-  --vp-c-brand-2: #8b5cf6;
-  --vp-c-brand-3: #6d28d9;
-  --vp-c-brand-soft: rgba(109, 40, 217, 0.12);
+  /* Dividers */
+  --vp-c-divider: #193019;
+  --vp-c-gutter: #090d09;
 
-  --vp-c-tip-1: var(--vp-c-brand-1);
-  --vp-c-tip-2: var(--vp-c-brand-2);
-  --vp-c-tip-3: var(--vp-c-brand-3);
-  --vp-c-tip-soft: var(--vp-c-brand-soft);
+  /* Green */
+  --vp-c-green-1: #b6ffb6;
+  --vp-c-green-2: #62ff88;
+  --vp-c-green-3: #00cc55;
+  --vp-c-green-soft: rgba(0, 255, 102, 0.10);
 
-  --vp-c-warning-1: #fbbf24;
-  --vp-c-warning-2: #f59e0b;
-  --vp-c-warning-3: #d97706;
-  --vp-c-warning-soft: rgba(245, 158, 11, 0.12);
+  /* Brand */
+  --vp-c-brand-1: #62ff88;
+  --vp-c-brand-2: #32e66a;
+  --vp-c-brand-3: #00aa44;
+  --vp-c-brand-soft: rgba(0, 255, 102, 0.11);
 
-  --vp-c-danger-1: #f87171;
-  --vp-c-danger-2: #ef4444;
-  --vp-c-danger-3: #dc2626;
-  --vp-c-danger-soft: rgba(239, 68, 68, 0.12);
+  /* Tip */
+  --vp-c-tip-1: #62ff88;
+  --vp-c-tip-2: #32e66a;
+  --vp-c-tip-3: #00aa44;
+  --vp-c-tip-soft: rgba(0, 255, 102, 0.10);
 
-  --vp-c-indigo-1: #a78bfa;
-  --vp-c-indigo-2: #8b5cf6;
-  --vp-c-indigo-3: #6d28d9;
-  --vp-c-indigo-soft: rgba(109, 40, 217, 0.12);
+  /* Warning */
+  --vp-c-warning-1: #e5e56b;
+  --vp-c-warning-2: #caca4f;
+  --vp-c-warning-3: #96962e;
+  --vp-c-warning-soft: rgba(220, 220, 80, 0.10);
 
-  --vp-nav-bg-color: rgba(13, 15, 22, 0.8);
-  --vp-sidebar-bg-color: #0d0f16;
-  --vp-c-gutter: rgba(163, 142, 255, 0.18);
-}
+  /* Danger */
+  --vp-c-danger-1: #ff7777;
+  --vp-c-danger-2: #ee5555;
+  --vp-c-danger-3: #bb3333;
+  --vp-c-danger-soft: rgba(255, 70, 70, 0.10);
 
-:root {
+  /* Default */
+  --vp-c-default-1: #a0b5a0;
+  --vp-c-default-2: #788c78;
+  --vp-c-default-3: #4e604e;
+  --vp-c-default-soft: rgba(150, 180, 150, 0.08);
+
+  /* Typography */
+  --vp-font-family-base:
+    "JetBrains Mono",
+    "Cascadia Code",
+    "Fira Code",
+    monospace;
+
+  --vp-font-family-mono:
+    "JetBrains Mono",
+    "Cascadia Code",
+    "Fira Code",
+    monospace;
+
+  /* Buttons */
   --vp-button-brand-border: transparent;
-  --vp-button-brand-text: #ffffff;
-  --vp-button-brand-bg: var(--vp-c-brand-3);
+  --vp-button-brand-text: #061006;
+  --vp-button-brand-bg: #00aa44;
+
   --vp-button-brand-hover-border: transparent;
-  --vp-button-brand-hover-text: #ffffff;
-  --vp-button-brand-hover-bg: var(--vp-c-brand-2);
+  --vp-button-brand-hover-text: #061006;
+  --vp-button-brand-hover-bg: #32e66a;
+
   --vp-button-brand-active-border: transparent;
-  --vp-button-brand-active-text: #ffffff;
-  --vp-button-brand-active-bg: var(--vp-c-brand-1);
+  --vp-button-brand-active-text: #061006;
+  --vp-button-brand-active-bg: #62ff88;
+
+  /* Home hero */
+  --vp-home-hero-name-color: #62ff88;
+  --vp-home-hero-name-background: none;
+
+  --vp-home-hero-image-background-image:
+    radial-gradient(
+      circle,
+      rgba(0, 255, 102, 0.20),
+      transparent 70%
+    );
+
+  --vp-home-hero-image-filter: blur(70px);
 }
+
+
+/* =========================================================
+   Dark Mode
+   ========================================================= */
+
+.dark {
+  --vp-c-bg: #090d09;
+  --vp-c-bg-alt: #0c120c;
+  --vp-c-bg-elv: #101810;
+  --vp-c-bg-soft: #0d150d;
+
+  --vp-c-text-1: #d7fbd7;
+  --vp-c-text-2: #9cba9c;
+  --vp-c-text-3: #668066;
+
+  --vp-c-divider: #193019;
+  --vp-c-gutter: #090d09;
+
+  --vp-c-brand-1: #62ff88;
+  --vp-c-brand-2: #32e66a;
+  --vp-c-brand-3: #00aa44;
+  --vp-c-brand-soft: rgba(0, 255, 102, 0.11);
+}
+
+
+/* =========================================================
+   Global
+   ========================================================= */
 
 html,
 body {
-  background: linear-gradient(180deg, #0d0f16 0%, #0f1220 100%);
+  background: #090d09;
 }
 
-body {
-  color: var(--vp-c-text-1);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+::selection {
+  background: rgba(0, 255, 102, 0.25);
+  color: #d7fbd7;
 }
 
-.VPNavBar,
-.VPNavBar .curtain,
-.VPSidebar,
-.VPContent,
-.VPDoc {
-  background: transparent;
+:focus-visible {
+  outline: 2px solid #32e66a;
+  outline-offset: 2px;
+}
+
+
+/* =========================================================
+   Navbar
+   ========================================================= */
+
+.VPNav {
+  background: rgba(9, 13, 9, 0.92);
+  border-bottom: 1px solid #193019;
 }
 
 .VPNavBar {
-  border-bottom: 1px solid var(--vp-c-divider);
-  backdrop-filter: blur(8px);
-}
-
-.VPHomeHero {
   background: transparent;
-  padding-top: 2rem;
 }
 
-.VPHomeHero .text {
-  color: var(--vp-c-text-2);
+.VPNavBarTitle .title {
+  color: #62ff88;
+  font-family: var(--vp-font-family-mono);
+  font-weight: 700;
 }
+
+.VPNavBarTitle .title::before {
+  content: "> ";
+  color: #00aa44;
+}
+
+.VPNavBarMenuLink {
+  color: #9cba9c;
+  font-family: var(--vp-font-family-mono);
+}
+
+.VPNavBarMenuLink:hover,
+.VPNavBarMenuLink.active {
+  color: #62ff88;
+}
+
+
+/* =========================================================
+   Sidebar
+   ========================================================= */
+
+.VPSidebar {
+  background: #0b110b;
+  border-right: 1px solid #193019;
+}
+
+.VPSidebarItem .text {
+  font-family: var(--vp-font-family-mono);
+}
+
+.VPSidebarItem.level-0 > .item > .text {
+  color: #62ff88;
+  font-weight: 700;
+}
+
+.VPSidebarItem.is-active > .item > .link {
+  color: #62ff88;
+}
+
+.VPSidebarItem.is-active > .item > .link::before {
+  content: "> ";
+  color: #00cc55;
+}
+
+.VPSidebarItem .link:hover {
+  color: #b6ffb6;
+}
+
+
+/* =========================================================
+   Documentation
+   ========================================================= */
+
+.vp-doc {
+  font-family: var(--vp-font-family-base);
+}
+
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4,
+.vp-doc h5,
+.vp-doc h6 {
+  color: #d7fbd7;
+  font-family: var(--vp-font-family-mono);
+}
+
+.vp-doc h1::before {
+  content: "# ";
+  color: #00aa44;
+}
+
+.vp-doc h2::before {
+  content: "## ";
+  color: #00aa44;
+}
+
+.vp-doc h3::before {
+  content: "### ";
+  color: #00aa44;
+}
+
+
+/* =========================================================
+   Links
+   ========================================================= */
+
+.vp-doc a {
+  color: #62ff88;
+  text-decoration-color: rgba(98, 255, 136, 0.35);
+}
+
+.vp-doc a:hover {
+  color: #b6ffb6;
+  text-decoration-color: #62ff88;
+}
+
+
+/* =========================================================
+   Inline Code
+   ========================================================= */
+
+.vp-doc :not(pre) > code {
+  background: rgba(0, 255, 102, 0.08);
+  border: 1px solid rgba(0, 255, 102, 0.15);
+  color: #62ff88;
+}
+
+
+/* =========================================================
+   Code Blocks
+   ========================================================= */
+
+.vp-doc div[class*="language-"] {
+  background: #060a06;
+  border: 1px solid #193019;
+  box-shadow:
+    0 0 0 1px rgba(0, 255, 102, 0.02),
+    0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.vp-doc div[class*="language-"]::before {
+  color: #668066;
+  font-family: var(--vp-font-family-mono);
+}
+
+.vp-doc div[class*="language-"] code {
+  font-family: var(--vp-font-family-mono);
+}
+
+.vp-doc .line {
+  color: #c7e8c7;
+}
+
+
+/* =========================================================
+   Terminal Code
+   ========================================================= */
+
+.vp-doc div[class*="language-bash"],
+.vp-doc div[class*="language-sh"],
+.vp-doc div[class*="language-shell"],
+.vp-doc div[class*="language-console"] {
+  border-color: #245524;
+}
+
+.vp-doc div[class*="language-bash"]::before,
+.vp-doc div[class*="language-sh"]::before,
+.vp-doc div[class*="language-shell"]::before,
+.vp-doc div[class*="language-console"]::before {
+  color: #32e66a;
+}
+
+
+/* =========================================================
+   Custom Blocks
+   ========================================================= */
+
+.custom-block {
+  border-width: 1px;
+}
+
+.custom-block.tip {
+  background: rgba(0, 255, 102, 0.06);
+  border-color: rgba(0, 255, 102, 0.25);
+}
+
+.custom-block.tip .custom-block-title {
+  color: #62ff88;
+}
+
+.custom-block.warning {
+  background: rgba(220, 220, 80, 0.06);
+  border-color: rgba(220, 220, 80, 0.25);
+}
+
+.custom-block.warning .custom-block-title {
+  color: #e5e56b;
+}
+
+.custom-block.danger {
+  background: rgba(255, 70, 70, 0.06);
+  border-color: rgba(255, 70, 70, 0.25);
+}
+
+.custom-block.danger .custom-block-title {
+  color: #ff7777;
+}
+
+.custom-block.info {
+  background: rgba(100, 150, 100, 0.06);
+  border-color: #193019;
+}
+
+
+/* =========================================================
+   Tables
+   ========================================================= */
+
+.vp-doc table {
+  border-collapse: collapse;
+  background: #0b110b;
+}
+
+.vp-doc tr {
+  background: #0b110b;
+  border-top: 1px solid #193019;
+}
+
+.vp-doc tr:nth-child(2n) {
+  background: #0e150e;
+}
+
+.vp-doc th {
+  background: #101810;
+  color: #62ff88;
+  font-family: var(--vp-font-family-mono);
+}
+
+.vp-doc td,
+.vp-doc th {
+  border: 1px solid #193019;
+}
+
+
+/* =========================================================
+   Blockquotes
+   ========================================================= */
+
+.vp-doc blockquote {
+  background: rgba(0, 255, 102, 0.04);
+  border-left: 3px solid #00aa44;
+  color: #9cba9c;
+}
+
+
+/* =========================================================
+   Search
+   ========================================================= */
+
+.VPLocalSearchBox .shell {
+  background: #0b110b;
+  border: 1px solid #245524;
+}
+
+.DocSearch-Button {
+  background: #0b110b;
+  border: 1px solid #193019;
+}
+
+.DocSearch-Button:hover {
+  border-color: #32e66a;
+}
+
+.DocSearch-Button .DocSearch-Search-Icon {
+  color: #62ff88;
+}
+
+
+/* =========================================================
+   Buttons
+   ========================================================= */
+
+.VPButton {
+  font-family: var(--vp-font-family-mono);
+}
+
+.VPButton.brand {
+  background: #00aa44;
+  color: #061006;
+}
+
+.VPButton.brand:hover {
+  background: #32e66a;
+}
+
+.VPButton.alt {
+  background: #101810;
+  border: 1px solid #245524;
+  color: #62ff88;
+}
+
+.VPButton.alt:hover {
+  background: #142014;
+  border-color: #32e66a;
+}
+
+
+/* =========================================================
+   Home Hero
+   ========================================================= */
+
+.VPHero .name {
+  color: #62ff88;
+  font-family: var(--vp-font-family-mono);
+}
+
+.VPHero .name::before {
+  content: "$ ";
+  color: #00aa44;
+}
+
+.VPHero .text {
+  color: #d7fbd7;
+  font-family: var(--vp-font-family-mono);
+}
+
+.VPHero .tagline {
+  color: #9cba9c;
+}
+
+.VPHero .actions {
+  font-family: var(--vp-font-family-mono);
+}
+
+
+/* =========================================================
+   Feature Cards
+   ========================================================= */
 
 .VPFeature {
-  background: rgba(20, 24, 38, 0.82);
-  border: 1px solid var(--vp-c-border);
-  box-shadow: 0 12px 28px rgba(7, 9, 17, 0.35);
+  background: #0b110b !important;
+  border: 1px solid #193019;
 }
 
-.VPFeature .title,
+.VPFeature:hover {
+  background: #0e150e !important;
+  border-color: #245524;
+}
+
+.VPFeature .title {
+  color: #62ff88;
+  font-family: var(--vp-font-family-mono);
+}
+
 .VPFeature .details {
-  color: var(--vp-c-text-1);
+  color: #9cba9c;
 }
 
-.VPButton.brand,
-.VPButton.alt {
-  border-radius: 10px;
-  box-shadow: none;
+
+/* =========================================================
+   Outline
+   ========================================================= */
+
+.VPDocAsideOutline .outline-link {
+  color: #668066;
+  font-family: var(--vp-font-family-mono);
 }
 
-.tutorial-landing {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 2rem 0 4rem;
+.VPDocAsideOutline .outline-link:hover,
+.VPDocAsideOutline .outline-link.active {
+  color: #62ff88;
 }
 
-.tutorial-hero {
-  margin-bottom: 2rem;
+
+/* =========================================================
+   Footer
+   ========================================================= */
+
+.VPFooter {
+  background: #090d09;
+  border-top: 1px solid #193019;
 }
 
-.eyebrow {
-  margin: 0 0 0.6rem;
-  color: var(--vp-c-brand-1);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+.VPFooter .message,
+.VPFooter .copyright {
+  color: #668066;
+  font-family: var(--vp-font-family-mono);
 }
 
-.tutorial-hero h1 {
-  margin: 0;
-  font-size: clamp(2.25rem, 5vw, 3.6rem);
-  line-height: 1.1;
-  letter-spacing: -0.04em;
-  color: var(--vp-c-text-1);
+
+/* =========================================================
+   Mobile Navigation
+   ========================================================= */
+
+.VPNavScreen {
+  background: #090d09;
 }
 
-.tutorial-subtitle {
-  margin: 0.85rem 0 0;
-  color: var(--vp-c-text-2);
-  font-size: 1.08rem;
-  max-width: 700px;
+.VPNavScreenMenuLink {
+  color: #9cba9c;
+  font-family: var(--vp-font-family-mono);
 }
 
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(260px, 1fr));
-  gap: 1.25rem;
-  margin-top: 1.5rem;
+.VPNavScreenMenuLink:hover,
+.VPNavScreenMenuLink.active {
+  color: #62ff88;
 }
 
-.category-card {
-  display: block;
-  padding: 1.5rem;
-  border: 1px solid var(--vp-c-border);
-  border-radius: 14px;
-  background: rgba(20, 24, 38, 0.8);
-  color: var(--vp-c-text-1);
-  text-decoration: none;
-  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+
+/* =========================================================
+   Scrollbar
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
 }
 
-.category-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(167, 139, 250, 0.5);
-  box-shadow: 0 14px 30px rgba(8, 10, 18, 0.34);
+::-webkit-scrollbar-track {
+  background: #090d09;
 }
 
-.category-card h3 {
-  margin: 0 0 0.6rem;
-  font-size: 1.05rem;
-  color: var(--vp-c-text-1);
+::-webkit-scrollbar-thumb {
+  background: #193019;
+  border: 2px solid #090d09;
 }
 
-.category-card p {
-  margin: 0;
-  color: var(--vp-c-text-2);
-  line-height: 1.6;
+::-webkit-scrollbar-thumb:hover {
+  background: #245524;
 }
 
-.tutorial-footer {
-  margin-top: 2rem;
-  padding-top: 1.2rem;
-  border-top: 1px solid var(--vp-c-divider);
+
+/* =========================================================
+   No Rounded Corners
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
 }
 
-.tutorial-footer a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2.8rem;
-  padding: 0.7rem 1rem;
-  border: 1px solid var(--vp-c-border);
-  border-radius: 10px;
-  background: rgba(20, 24, 38, 0.6);
-  color: var(--vp-c-text-2);
-  text-decoration: none;
+
+/* =========================================================
+   Optional CRT Scanlines
+   ========================================================= */
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 255, 102, 0.015) 0,
+      rgba(0, 255, 102, 0.015) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+
+  opacity: 0.18;
 }
-
-.community-panel {
-  margin-top: 2rem;
-  padding: 2rem;
-  border: 1px solid var(--vp-c-border);
-  border-radius: 16px;
-  background: rgba(20, 24, 38, 0.75);
-  text-align: center;
-}
-
-.community-panel h2 {
-  margin: 0 0 0.5rem;
-  font-size: 2rem;
-  color: var(--vp-c-text-1);
-}
-
-.community-panel p {
-  color: var(--vp-c-text-2);
-  margin-bottom: 1.25rem;
-}
-
-.community-links {
-  display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.community-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.8rem 1.15rem;
-  border-radius: 10px;
-  background: var(--vp-c-brand-soft);
-  color: var(--vp-c-text-1);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.community-link:hover {
-  opacity: 0.95;
-}
-
-@media (min-width: 960px) {
-  .VPHomeHero .image-bg {
-    filter: blur(38px);
-  }
-}
-
-@media (max-width: 640px) {
-  .category-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color-scheme: light;
-    --vp-c-bg: #f5f3ff;
-    --vp-c-bg-soft: #ffffff;
-    --vp-c-bg-alt: #f3f0ff;
-    --vp-c-border: rgba(109, 40, 217, 0.12);
-    --vp-c-divider: rgba(109, 40, 217, 0.12);
-    --vp-c-text-1: #201b2d;
-    --vp-c-text-2: #4a3e65;
-    --vp-c-text-3: #6b5a8a;
-    --vp-c-brand-1: #7c3aed;
-    --vp-c-brand-2: #6d28d9;
-    --vp-c-brand-3: #5b21b6;
-    --vp-c-brand-soft: rgba(109, 40, 217, 0.08);
-    --vp-nav-bg-color: rgba(255, 255, 255, 0.8);
-    --vp-sidebar-bg-color: #f9f7ff;
-  }
-
-  html,
-  body {
-    background: linear-gradient(180deg, #f6f2ff 0%, #f1efff 100%);
-  }
-
-  .VPFeature,
-  .category-card,
-  .community-panel,
-  .tutorial-footer a {
-    background: rgba(255, 255, 255, 0.9);
-    border-color: rgba(109, 40, 217, 0.1);
-    box-shadow: 0 12px 24px rgba(109, 40, 217, 0.06);
-  }
-
-  .category-card h3,
-  .community-panel h2,
-  .tutorial-hero h1,
-  .eyebrow {
-    color: #3a245f;
-  }
-}
-
-@media (min-width: 960px) {
-  :root {
-    --vp-home-hero-image-filter: blur(68px);
-  }
-}
-
-/**
- * Component: Custom Block
- * -------------------------------------------------------------------------- */
-
-:root {
-  --vp-custom-block-tip-border: transparent;
-  --vp-custom-block-tip-text: var(--vp-c-text-1);
-  --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
-  --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
-}
-
