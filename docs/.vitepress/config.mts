@@ -2,30 +2,23 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: 'LykCloud Tutorials',
-  description: 'Step-by-step setup guides for SSH, Chrome Remote Desktop, and systemctl fixes.',
+  description: 'Category-based guides for SSH, remote desktop setup, server fixes, and hosting tools.',
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Chrome Remote Desktop', link: '/chrome-remote-desktop' },
-      { text: 'SSH', link: '/ssh' },
-      { text: 'Systemctl', link: '/systemctl' },
-      { text: 'PufferPanel', link: '/pufferpanel' }
+      { text: 'Tutorials', link: '/tutorials' },
+      { text: 'Discord', link: 'https://discord.gg/5qbfgzjx7V' },
+      { text: 'GitHub', link: 'https://github.com/FreeCode911' }
     ],
 
     sidebar: [
       {
-        text: 'Guides',
+        text: 'Start Here',
         items: [
-          { text: 'Chrome Remote Desktop', link: '/chrome-remote-desktop' },
-          { text: 'SSH Setup', link: '/ssh' },
-          { text: 'Fixing Systemctl', link: '/systemctl' },
-          { text: 'PufferPanel Script', link: '/pufferpanel' }
+          { text: 'Home', link: '/' },
+          { text: 'Tutorial Categories', link: '/tutorials' }
         ]
       }
-    ],
-
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/FreeCode911/tutorial' }
     ]
   }
 })

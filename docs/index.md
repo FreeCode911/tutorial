@@ -3,25 +3,32 @@ layout: home
 
 hero:
   name: "LykCloud Tutorials"
-  text: "Server setup guides and fixes"
-  tagline: "Simple step-by-step instructions for SSH access, remote desktop setup, and systemctl repairs."
+  text: "Find the right guide fast"
+  tagline: "Explore tutorials by category for server setup, access, fixes, and management tools."
   actions:
     - theme: brand
-      text: Chrome Remote Desktop
-      link: /chrome-remote-desktop
+      text: Browse tutorials
+      link: /tutorials
     - theme: alt
-      text: SSH Setup
+      text: SSH guide
       link: /ssh
-    - theme: alt
-      text: Systemctl Fix
-      link: /systemctl
 
 features:
-  - title: Chrome Remote Desktop
-    details: Install and configure remote desktop access with the CRD setup process.
-  - title: SSH Access
-    details: Enable root login and set up Dropbear so you can connect to your server.
-  - title: Systemctl Fix
-    details: Replace the broken default systemctl so services work properly on this environment.
+  - title: Remote Access
+    details: Set up Chrome Remote Desktop and SSH connections for managing your server securely.
+  - title: Server Fixes
+    details: Troubleshoot Linux environments and repair common service issues like systemctl.
+  - title: Hosting Tools
+    details: Install panels and automation tools such as PufferPanel for easier server control.
+
 ---
+
+<div class="community-panel">
+  <h2>Join the community</h2>
+  <p>Ask questions, share setups, and discover more tutorials from the LykCloud community.</p>
+  <div class="community-links">
+    <a class="community-link" href="https://discord.gg/5qbfgzjx7V" target="_blank" rel="noreferrer">Discord</a>
+    <a class="community-link" href="https://github.com/FreeCode911" target="_blank" rel="noreferrer">GitHub</a>
+  </div>
+</div>
 
